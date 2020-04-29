@@ -2,7 +2,7 @@
 gcc -std=c11 -o lang lang.c
 
 runTest() {
-    output=(./lang "$1")
+    output=$(./lang "$1")
     if [ "$output" != "$2" ]; then
       echo "$1: $2 expected, but got $output"
       exit 1
