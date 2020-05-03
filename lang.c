@@ -1,9 +1,15 @@
 #include <stdio.h>
+#include <ctype.h>
 
 static char *p;
 
 static int eval() {
-  p++;
+  if (isdigit(*p)) {
+    int val = *p++ - '0';
+    while (isdigit(*p))
+      val = val * 10 + (*p++ - '0');
+    return val;
+  }
   return 0;
 }
 

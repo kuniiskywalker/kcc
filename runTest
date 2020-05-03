@@ -11,5 +11,7 @@ runTest() {
 }
 
 runTest 0 0
+runTest 1 1
+runTest 99 99
 
 echo OK
