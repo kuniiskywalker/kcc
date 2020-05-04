@@ -23,4 +23,8 @@ echo '=== + ==='
 runTest '+ 1 2' 3
 runTest '+ 10 2' 12
 
+echo '=== - ==='
+runTest '- 2 1' 1
+runTest '- 10 200' -190
+
 echo OK

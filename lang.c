@@ -28,9 +28,15 @@ static int eval() {
     return val;
   }
 
-  if (*p == '+')
+  if (*p == '+') {
     p++;
     return eval() + eval();
+  }
+
+  if (*p == '-') {
+    p++;
+    return eval() - eval();
+  }
 
   error("invalid character: %c", *p);
 }
