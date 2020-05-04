@@ -48,4 +48,8 @@ runTest 'F[- 10 a] F(3)' 7
 runTest 'F[* a b] F(3 5)' 15
 runTest 'F[/ 9 a] F(3)' 3
 
+echo '=== build-in function ==='
+runTest 'P(1)' '1
+1'
+
 echo OK

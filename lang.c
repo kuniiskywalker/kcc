@@ -59,6 +59,16 @@ static int eval(int *args) {
     return eval(args);
   }
 
+  // "P" print primitive
+  if (*p == 'P') {
+    *p++;
+    expect('(');
+    int val = eval(args);
+    expect(')');
+    printf("%d\n", val);
+    return val;
+  }
+
   // Function application
   if  ('A' <= *p && *p <= 'Z' && p[1] == '(') {
     int newargs[26];
