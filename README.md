@@ -1,6 +1,26 @@
+kcc
+====
+
+Tiny self-hosted C compiler for practice.
+
+## Description
+
+Practice based on the following code
+
+https://gist.github.com/rui314/a13acb5bbea0fb4bd66eaa4db4ac93d2
+
+## Usage
+
+### Execute
 
 ```
-gcc -std=c11 -o lang lang.c && ./lang 'a'
+gcc -std=c11 -o lang lang.c && ./lang 'F[P(a) F(b  + a b)] F(1 1)'|head -30
+```
+
+### Test
+
+```
+./runTest
 ```
 
 ## How to debug
@@ -32,5 +52,6 @@ Execute
 ```
 run
 ```
+
 
 
