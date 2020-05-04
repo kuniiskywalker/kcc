@@ -27,4 +27,13 @@ echo '=== - ==='
 runTest '- 2 1' 1
 runTest '- 10 200' -190
 
+echo '=== * ==='
+runTest '* 2 1' 2 
+runTest '* 10 10' 100
+
+echo '=== / ==='
+# If you run it on windows mingw, '/' will be expanded in the execution path, so there is a space at the beginning.
+runTest ' / 10 5' 2
+runTest ' / 100 20' 5
+
 echo OK

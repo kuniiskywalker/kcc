@@ -28,6 +28,13 @@ static int eval() {
     return val;
   }
 
+  if (*p == '/') {
+    p++;
+    int x = eval();
+    int y = eval();
+    return x / y;
+  }
+
   if (*p == '+') {
     p++;
     return eval() + eval();
@@ -40,12 +47,18 @@ static int eval() {
     return x - y;
   }
 
+  if (*p == '*') {
+    p++;
+    return eval() * eval();
+  }
+
   error("invalid character: %c", *p);
 }
 
 int main(int argc, char **argv) {
   p = argv[1];
-  while (*p)
+  while (*p) {
     printf("%d\n", eval());
+  }
   return 0;
 }
