@@ -44,7 +44,7 @@ $ gdb --args ./a.exe "+ 1 1"
 Add break point for function
 
 ```
-breakpoint {function name}
+breakpoint {function name or line number}
 ```
 
 Execute
