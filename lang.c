@@ -2,6 +2,7 @@
 #include <ctype.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include <string.h>
 
 static char *p;
 
@@ -28,28 +29,16 @@ static int eval() {
     return val;
   }
 
-  if (*p == '/') {
-    p++;
+  if (strchr("+-*/", *p)) {
+    int op = *p++;
     int x = eval();
     int y = eval();
-    return x / y;
-  }
-
-  if (*p == '+') {
-    p++;
-    return eval() + eval();
-  }
-
-  if (*p == '-') {
-    p++;
-    int x = eval();
-    int y = eval();
-    return x - y;
-  }
-
-  if (*p == '*') {
-    p++;
-    return eval() * eval();
+    switch (op) {
+    case '+': return x + y;
+    case '-': return x - y;
+    case '*': return x * y;
+    case '/': return x / y;
+    }
   }
 
   error("invalid character: %c", *p);
