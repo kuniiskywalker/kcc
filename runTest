@@ -36,4 +36,9 @@ echo '=== / ==='
 runTest ' / 10 5' 2
 runTest ' / 100 20' 5
 
+echo '=== recursive ==='
+runTest '+ 1 + 1 2' 4
+runTest '+ 1 - 1 2' 0
+runTest '+ 1 * 2 / 8 2' 9
+
 echo OK
