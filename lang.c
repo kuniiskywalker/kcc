@@ -1,7 +1,17 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <stdarg.h>
+#include <stdlib.h>
 
 static char *p;
+
+static void error(char *fmt, ...) {
+    va_list ap;
+    va_start(ap, fmt);
+    vfprintf(stderr, fmt, ap);
+    fprintf(stderr, "\n");
+    exit(1);
+}
 
 static void skip() {
   while (isspace(*p))
@@ -17,6 +27,8 @@ static int eval() {
       val = val * 10 + (*p++ - '0');
     return val;
   }
+
+  error("invalid character: %c", *p);
 }
 
 int main(int argc, char **argv) {
