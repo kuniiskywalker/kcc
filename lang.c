@@ -35,7 +35,9 @@ static int eval() {
 
   if (*p == '-') {
     p++;
-    return eval() - eval();
+    int x = eval();
+    int y = eval();
+    return x - y;
   }
 
   error("invalid character: %c", *p);
