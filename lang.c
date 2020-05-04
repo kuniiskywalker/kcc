@@ -34,40 +34,43 @@ static void expect(char c) {
   p++;
 }
 
-static int eval(int arg);
+static int eval(int *args);
 
-static int eval_string(char *code, int arg) {
+static int eval_string(char *code, int *args) {
   char *orig = p;
   p = code;
-  int val = eval(arg);
+  int val = eval(args);
   p = orig;
   return val;
 }
 
-static int eval(int arg) {
+static int eval(int *args) {
   skip();
 
   // Function parameter
-  if (*p == '.') {
-    p++;
-    return arg;
-  }
+  if ('a' <= *p && *p <= 'z')
+    return args[*p++ - 'a'];
 
   // Function definition
   if  ('A' <= *p && *p <= 'Z' && p[1] == '[') {
     char name = *p;
     p += 2;
     read_until(']', func[name - 'A']);
-    return eval(arg);
+    return eval(args);
   }
 
   // Function application
   if  ('A' <= *p && *p <= 'Z' && p[1] == '(') {
+    int newargs[26];
     char name = *p;
     p += 2;
-    int newarg = eval(arg);
+
+    int i = 0;
+    for (skip(); *p != ')'; skip())
+      newargs[i++] = eval(args);
+
     expect(')');
-    return eval_string(func[name - 'A'], newarg);
+    return eval_string(func[name - 'A'], newargs);
   }
 
   // Literal numbers
@@ -81,8 +84,8 @@ static int eval(int arg) {
   // Arithmetic oprators
   if (strchr("+-*/", *p)) {
     int op = *p++;
-    int x = eval(arg);
-    int y = eval(arg);
+    int x = eval(args);
+    int y = eval(args);
     switch (op) {
     case '+': return x + y;
     case '-': return x - y;

@@ -42,10 +42,10 @@ runTest '+ 1 - 1 2' 0
 runTest '+ 1 * 2 / 8 2' 9
 
 echo '=== functions ==='
-runTest 'F[+ . .] F(1)' 2
-runTest 'F[+ . 3] F(F(1))' 7
-runTest 'F[- 10 .] F(3)' 7
-runTest 'F[* . .] F(3)' 9
-runTest 'F[/ 9 .] F(3)' 3
+runTest 'F[+ a a] F(1)' 2
+runTest 'F[+ a 3] F(F(1))' 7
+runTest 'F[- 10 a] F(3)' 7
+runTest 'F[* a b] F(3 5)' 15
+runTest 'F[/ 9 a] F(3)' 3
 
 echo OK
