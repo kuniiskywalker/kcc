@@ -1,3 +1,4 @@
 lang
-lang.exe
+*.exe
 *.BAK
+*.out
