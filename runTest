@@ -10,6 +10,7 @@ runTest() {
     echo "$1 => $output"
 }
 
+echo '=== basic ==='
 runTest 0 0
 runTest 1 1
 runTest 99 99
@@ -17,5 +18,9 @@ runTest 99 99
 runTest '1 2 3' '1
 2
 3'
+
+echo '=== + ==='
+runTest '+ 1 2' 3
+runTest '+ 10 2' 12
 
 echo OK

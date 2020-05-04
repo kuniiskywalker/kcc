@@ -28,6 +28,10 @@ static int eval() {
     return val;
   }
 
+  if (*p == '+')
+    p++;
+    return eval() + eval();
+
   error("invalid character: %c", *p);
 }
 
