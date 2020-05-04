@@ -39,7 +39,9 @@ static int eval(int *args);
 static int eval_string(char *code, int *args) {
   char *orig = p;
   p = code;
-  int val = eval(args);
+  int val;
+  while (*p)
+    val = eval(args);
   p = orig;
   return val;
 }
